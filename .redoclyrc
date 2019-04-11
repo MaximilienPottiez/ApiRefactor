@@ -1,0 +1,8 @@
+
+apiTitle: Refactor
+splitSpec: true
+codeSamples: true
+swaggerUI: true
+travis: true
+repo: MaximilienPottiez/ApiRefactor
+oasVersion: 3.0.0
