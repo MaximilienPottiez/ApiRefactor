@@ -1,0 +1,19 @@
+type: object
+properties:
+  date_id:
+    type: integer
+  type_id:
+    type: integer
+  currency_code:
+    type: string
+    example: AUD
+  price:
+    type: number
+    example: '5539.00'
+  type_name:
+    type: string
+    example: Twin (Per Person)
+  is_from_price:
+    type: integer
+  discount:
+    type: string

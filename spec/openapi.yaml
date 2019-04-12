@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Example.com
+  title: Refactor old feed
   termsOfService: 'https://example.com/terms/'
   contact:
     email: contact@example.com
@@ -14,7 +14,7 @@ info:
   description: >
     This is an **example** API to demonstrate features of OpenAPI specification
 
-    # Introduction
+    # Introduction 
 
     This specification is intended to to be a good starting point for describing
     your API in 
@@ -53,10 +53,8 @@ externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/Rebilly/generator-openapi-repo'
 tags:
-  - name: Echo
+  - name: Refactor
     description: Example echo operations
-  - name: User
-    description: Operations about user
 servers:
   - url: 'http://example.com/api/v1'
   - url: 'https://example.com/api/v1'

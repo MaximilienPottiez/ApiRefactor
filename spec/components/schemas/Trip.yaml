@@ -1,0 +1,49 @@
+type: object
+properties:
+  id:
+    type: string
+    example: '213'
+  code:
+    type: string
+    example: AHAFBH
+  name:
+    type: string
+    example: Asian Fusion
+  title:
+    type: string
+    example: The Ultimate Asian Adventure
+  alias:
+    type: string
+    example: asian-fusion
+  description:
+    type: string
+  images:
+    $ref: '#/components/schemas/Image'
+  primary_image:
+    $ref: '#/components/schemas/Image'
+  mate_title:
+    type: string
+    example: ''
+  meta_desc:
+    type: string
+    example: ''
+  versions:
+    $ref: '#/components/schemas/Version'
+  default_version:
+    $ref: '#/components/schemas/Version'
+  from_price:
+    $ref: '#/components/schemas/Price'
+  from_prices:
+    $ref: '#/components/schemas/Price'
+  to_price:
+    $ref: '#/components/schemas/Price'
+  to_prices:
+    $ref: '#/components/schemas/Price'
+  dates:
+    $ref: '#/components/schemas/Date'
+  link:
+    type: string
+    example: 'https://www.topdeck.travel/holidays/asian-fusion'
+    description: link to the site page
+  content:
+    $ref: '#/components/schemas/Content'

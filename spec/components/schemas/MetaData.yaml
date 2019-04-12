@@ -1,0 +1,14 @@
+type: object
+properties:
+  StartCity:
+    type: string
+    example: Bangkok
+  EndCity:
+    type: string
+    example: Hanoi
+  StartCountry:
+    type: string
+    example: Thailand
+  EndCountry:
+    type: string
+    example: Vietnam

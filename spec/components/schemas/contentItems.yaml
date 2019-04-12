@@ -1,0 +1,12 @@
+type: object
+properties:
+  title:
+    type: string
+    example: More Inclusions
+  alias:
+    type: string
+    example: also-included
+  items:
+    type: array
+    items:
+      $ref: '#/components/schemas/contentItemsItems'

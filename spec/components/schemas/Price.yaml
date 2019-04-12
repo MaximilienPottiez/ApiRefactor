@@ -1,0 +1,51 @@
+type: object
+properties:
+  price:
+    type: object
+    properties:
+      type_id:
+        type: integer
+      date_id:
+        type: integer
+      currency_code:
+        type: string
+        example: GBP
+      currency_symbol:
+        type: string
+      adult_value:
+        type: number
+        example: '2634.15'
+      previous_adult_value:
+        type: number
+        example: '3099.00'
+      start_date_offset:
+        type: integer
+      end_date_offset:
+        type: integer
+      was_price:
+        type: number
+        example: '3099.00'
+      type:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 2
+          name:
+            type: string
+            example: Twin (Per Person)
+          title:
+            type: string
+            example: Twin (Per Person)
+          is_from_price:
+            type: integer
+          ordering:
+            type: integer
+          default_start_date_offset:
+            type: integer
+          default_end_date_offset:
+            type: integer
+          published:
+            type: integer
+      version_id:
+        type: integer

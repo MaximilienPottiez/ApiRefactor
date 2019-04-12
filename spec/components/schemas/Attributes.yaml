@@ -1,0 +1,6 @@
+type: object
+properties:
+  key:
+    type: string
+    example: Visit Pak Ou Caves
+    description: The Key is the name !!!

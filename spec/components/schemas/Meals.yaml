@@ -1,0 +1,8 @@
+type: object
+properties:
+  breakfasts:
+    type: integer
+  lunches:
+    type: integer
+  dinners:
+    type: integer

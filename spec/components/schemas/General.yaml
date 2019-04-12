@@ -1,0 +1,19 @@
+type: object
+properties:
+  alias:
+    type: string
+    example: western-paradise
+  code:
+    type: string
+    example: ECJNLB
+  id:
+    type: string
+    example: '213'
+  link:
+    type: string
+    example: 'https://www.topdeck.travel/holidays/asian-fusion'
+    description: link to the site page
+  url:
+    type: string
+    example: 'https://www.topdeck.travel/...'
+    description: link to the trip feed

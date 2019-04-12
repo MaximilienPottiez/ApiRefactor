@@ -1,0 +1,14 @@
+get:
+  tags:
+    - Refactor
+  summary: A trip
+  operationId: trip
+  description: |
+    Details for one trip
+  responses:
+    '200':
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Trip'

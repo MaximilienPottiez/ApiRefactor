@@ -1,0 +1,32 @@
+get:
+  tags:
+    - Refactor
+  summary: List of trip
+  operationId: list_trips
+  description: Receive the exact message you've sent
+  security:
+    - api_key: []
+    - basic_auth: []
+  responses:
+    '200':
+      description: Successful Response
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        X-Expires-After:
+          $ref: '#/components/headers/ExpiresAfter'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/General'
+        application/xml:
+          schema:
+            type: string
+        text/csv:
+          schema:
+            type: string

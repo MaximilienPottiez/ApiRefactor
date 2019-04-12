@@ -1,0 +1,21 @@
+type: object
+properties:
+  id:
+    type: object
+    properties:
+      title:
+        type: string
+        example: 2016 Asian Fusion trip AHAFBH Angkor wat
+      alias:
+        type: string
+        example: 2016-asian-fusion-trip-AHAFBH-angkor-wat
+      width:
+        type: integer
+        example: '1745'
+      height:
+        type: integer
+        example: '495'
+      url:
+        type: string
+        example: 'https://www.topdeck.travel/...jpg'
+        description: link to the trip image

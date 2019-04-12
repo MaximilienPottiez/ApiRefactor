@@ -1,0 +1,15 @@
+type: object
+properties:
+  start_day:
+    type: integer
+  end_day:
+    type: integer
+  description:
+    type: string
+    example: Touch down in Bangkok and ...
+  meals_included:
+    type: integer
+    example: 2
+  title:
+    type: string
+    example: 'Bangkok, Thailand'

@@ -1,0 +1,48 @@
+type: object
+properties:
+  id:
+    type: string
+    example: '123456'
+  name:
+    type: string
+    example: Asian Fusion 2018/19
+  title:
+    type: string
+    example: Bangkok to Hanoi
+  description:
+    type: string
+    example: ''
+  is_default:
+    type: boolean
+    example: '0'
+  number_of_days:
+    type: string
+    example: '27'
+  max_group_size:
+    type: string
+    example: '0'
+  attributes:
+    $ref: '#/components/schemas/Attributes'
+  meta_data:
+    $ref: '#/components/schemas/MetaData'
+  code:
+    type: string
+    example: AHAFBH-8
+  itinerary:
+    type: array
+    items:
+      $ref: '#/components/schemas/Itinerary'
+  maps:
+    $ref: '#/components/schemas/Image'
+  meals_included:
+    $ref: '#/components/schemas/Meals'
+  accommodation:
+    $ref: '#/components/schemas/Accommodation'
+  from_price:
+    $ref: '#/components/schemas/Price'
+  to_price obj:
+    $ref: '#/components/schemas/Price'
+  content:
+    type: array
+    items:
+      $ref: '#/components/schemas/Content'
