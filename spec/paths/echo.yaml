@@ -1,7 +1,14 @@
 post:
-  operationId: null
+  operationId: ok
   requestBody:
     content:
       application/json:
         schema:
-          type: null
+          type: integer
+  responses:
+    '200':
+      description: useless
+      content:
+        application/json:
+          schema:
+            type: integer

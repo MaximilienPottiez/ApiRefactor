@@ -26,7 +26,9 @@ get:
               $ref: '#/components/schemas/General'
         application/xml:
           schema:
-            type: string
+            type: array
+            items:
+              $ref: '#/components/schemas/General'
         text/csv:
           schema:
             type: string
