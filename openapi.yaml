@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Example.com
+  title: Refactor old feed
   termsOfService: 'https://example.com/terms/'
   contact:
     email: contact@example.com
@@ -13,7 +13,7 @@ info:
     url: 'https://apis.guru/openapi-template/logo.png'
   description: |
     This is an **example** API to demonstrate features of OpenAPI specification
-    # Introduction
+    # Introduction 
     This specification is intended to to be a good starting point for describing your API in 
     [OpenAPI/Swagger format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
     It also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and 
@@ -30,60 +30,27 @@ externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/Rebilly/generator-openapi-repo'
 tags:
-  - name: Echo
+  - name: Refactor
     description: Example echo operations
-  - name: User
-    description: Operations about user
 servers:
   - url: 'http://example.com/api/v1'
   - url: 'https://example.com/api/v1'
 paths:
   /echo:
     post:
-      tags:
-        - Echo
-      summary: Echo test
-      description: Receive the exact message you've sent
-      operationId: echo
-      security:
-        - api_key: []
-        - basic_auth: []
-      responses:
-        '200':
-          description: OK
-          headers:
-            X-Rate-Limit:
-              description: calls per hour allowed by the user
-              schema:
-                type: integer
-                format: int32
-            X-Expires-After:
-              $ref: '#/components/headers/ExpiresAfter'
-          content:
-            application/json:
-              schema:
-                type: string
-              examples:
-                response:
-                  value: Hello world!
-            application/xml:
-              schema:
-                type: string
-            text/csv:
-              schema:
-                type: string
+      operationId: ok
       requestBody:
         content:
           application/json:
             schema:
-              type: string
-              example: Hello world!
-          application/xml:
-            schema:
-              type: string
-              example: Hello world!
-        description: Echo payload
-        required: true
+              type: integer
+      responses:
+        '200':
+          description: useless
+          content:
+            application/json:
+              schema:
+                type: integer
       x-code-samples:
         - lang: 'C#'
           source: |
@@ -108,111 +75,382 @@ paths:
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
-  '/users/{username}':
-    parameters:
-      - name: pretty_print
-        in: query
-        description: Pretty print response
-        schema:
-          type: boolean
+  /trip:
     get:
       tags:
-        - User
-      summary: Get user by user name
+        - Refactor
+      summary: A trip
+      operationId: trip
       description: |
-        Some description of the operation. 
-        You can use `markdown` here.
-      operationId: getUserByName
-      parameters:
-        - name: username
-          in: path
-          description: The name that needs to be fetched
-          required: true
-          schema:
-            type: string
-        - name: with_email
-          in: query
-          description: Filter users without email
-          schema:
-            type: boolean
-      security:
-        - main_auth:
-            - 'read:users'
-        - api_key: []
+        Details for one trip
       responses:
         '200':
-          description: Success
+          description: Successful Response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-              example:
-                username: user1
-                email: user@example.com
-        '403':
-          description: Forbidden
-        '404':
-          description: User not found
-    put:
+                $ref: '#/components/schemas/Trip'
+  /trips:
+    get:
       tags:
-        - User
-      summary: Updated user
-      description: This can only be done by the logged in user.
-      operationId: updateUser
-      parameters:
-        - name: username
-          in: path
-          description: The name that needs to be updated
-          required: true
-          schema:
-            type: string
+        - Refactor
+      summary: List of trip
+      operationId: list_trips
+      description: Receive the exact message you've sent
       security:
-        - main_auth:
-            - 'write:users'
+        - api_key: []
+        - basic_auth: []
       responses:
         '200':
-          description: OK
-        '400':
-          description: Invalid user supplied
-        '404':
-          description: User not found
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-        description: Updated user object
-        required: true
+          description: Successful Response
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/General'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/General'
+            text/csv:
+              schema:
+                type: string
 components:
   schemas:
-    Email:
-      description: User email address
+    Accommodation:
       type: string
-      format: test
-      example: john.smith@example.com
-    User:
+    Attributes:
       type: object
       properties:
-        username:
-          description: User supplied username
+        key:
           type: string
-          minLength: 4
-          example: John78
-        firstName:
-          description: User first name
+          example: Visit Pak Ou Caves
+          description: The Key is the name !!!
+    Content:
+      type: array
+      items:
+        $ref: '#/components/schemas/contentItems'
+    contentItems:
+      type: object
+      properties:
+        title:
           type: string
-          minLength: 1
-          example: John
-        lastName:
-          description: User last name
+          example: More Inclusions
+        alias:
           type: string
-          minLength: 1
-          example: Smith
-        email:
-          $ref: '#/components/schemas/Email'
+          example: also-included
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/contentItemsItems'
+    contentItemsItems:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+    Date:
+      type: object
+      properties:
+        id:
+          type: object
+          properties:
+            id:
+              type: integer
+            version_id:
+              type: integer
+            start_date:
+              type: string
+              format: date
+            end_date:
+              type: string
+              format: date
+            flags:
+              type: object
+              properties:
+                id:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: Guaranteed
+            title:
+              type: string
+              example: Bangkok to Hanoi
+            name:
+              type: string
+              example: Asian Fusion 2018/19
+            code:
+              type: string
+              example: AHAFBH-8
+            prices:
+              type: array
+              items:
+                $ref: '#/components/schemas/PriceTwo'
+    General:
+      type: object
+      properties:
+        alias:
+          type: string
+          example: western-paradise
+        code:
+          type: string
+          example: ECJNLB
+        id:
+          type: string
+          example: '213'
+        link:
+          type: string
+          example: 'https://www.topdeck.travel/holidays/asian-fusion'
+          description: link to the site page
+        url:
+          type: string
+          example: 'https://www.topdeck.travel/...'
+          description: link to the trip feed
+    Image:
+      type: object
+      properties:
+        id:
+          type: object
+          properties:
+            title:
+              type: string
+              example: 2016 Asian Fusion trip AHAFBH Angkor wat
+            alias:
+              type: string
+              example: 2016-asian-fusion-trip-AHAFBH-angkor-wat
+            width:
+              type: integer
+              example: '1745'
+            height:
+              type: integer
+              example: '495'
+            url:
+              type: string
+              example: 'https://www.topdeck.travel/...jpg'
+              description: link to the trip image
+    Itinerary:
+      type: object
+      properties:
+        start_day:
+          type: integer
+        end_day:
+          type: integer
+        description:
+          type: string
+          example: Touch down in Bangkok and ...
+        meals_included:
+          type: integer
+          example: 2
+        title:
+          type: string
+          example: 'Bangkok, Thailand'
+    Meals:
+      type: object
+      properties:
+        breakfasts:
+          type: integer
+        lunches:
+          type: integer
+        dinners:
+          type: integer
+    MetaData:
+      type: object
+      properties:
+        StartCity:
+          type: string
+          example: Bangkok
+        EndCity:
+          type: string
+          example: Hanoi
+        StartCountry:
+          type: string
+          example: Thailand
+        EndCountry:
+          type: string
+          example: Vietnam
+    Price:
+      type: object
+      properties:
+        price:
+          type: object
+          properties:
+            type_id:
+              type: integer
+            date_id:
+              type: integer
+            currency_code:
+              type: string
+              example: GBP
+            currency_symbol:
+              type: string
+            adult_value:
+              type: number
+              example: '2634.15'
+            previous_adult_value:
+              type: number
+              example: '3099.00'
+            start_date_offset:
+              type: integer
+            end_date_offset:
+              type: integer
+            was_price:
+              type: number
+              example: '3099.00'
+            type:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 2
+                name:
+                  type: string
+                  example: Twin (Per Person)
+                title:
+                  type: string
+                  example: Twin (Per Person)
+                is_from_price:
+                  type: integer
+                ordering:
+                  type: integer
+                default_start_date_offset:
+                  type: integer
+                default_end_date_offset:
+                  type: integer
+                published:
+                  type: integer
+            version_id:
+              type: integer
+    PriceTwo:
+      type: object
+      properties:
+        date_id:
+          type: integer
+        type_id:
+          type: integer
+        currency_code:
+          type: string
+          example: AUD
+        price:
+          type: number
+          example: '5539.00'
+        type_name:
+          type: string
+          example: Twin (Per Person)
+        is_from_price:
+          type: integer
+        discount:
+          type: string
+    Trip:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '213'
+        code:
+          type: string
+          example: AHAFBH
+        name:
+          type: string
+          example: Asian Fusion
+        title:
+          type: string
+          example: The Ultimate Asian Adventure
+        alias:
+          type: string
+          example: asian-fusion
+        description:
+          type: string
+        images:
+          $ref: '#/components/schemas/Image'
+        primary_image:
+          $ref: '#/components/schemas/Image'
+        mate_title:
+          type: string
+          example: ''
+        meta_desc:
+          type: string
+          example: ''
+        versions:
+          $ref: '#/components/schemas/Version'
+        default_version:
+          $ref: '#/components/schemas/Version'
+        from_price:
+          $ref: '#/components/schemas/Price'
+        from_prices:
+          $ref: '#/components/schemas/Price'
+        to_price:
+          $ref: '#/components/schemas/Price'
+        to_prices:
+          $ref: '#/components/schemas/Price'
+        dates:
+          $ref: '#/components/schemas/Date'
+        link:
+          type: string
+          example: 'https://www.topdeck.travel/holidays/asian-fusion'
+          description: link to the site page
+        content:
+          $ref: '#/components/schemas/Content'
+    Version:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123456'
+        name:
+          type: string
+          example: Asian Fusion 2018/19
+        title:
+          type: string
+          example: Bangkok to Hanoi
+        description:
+          type: string
+          example: ''
+        is_default:
+          type: boolean
+          example: '0'
+        number_of_days:
+          type: string
+          example: '27'
+        max_group_size:
+          type: string
+          example: '0'
+        attributes:
+          $ref: '#/components/schemas/Attributes'
+        meta_data:
+          $ref: '#/components/schemas/MetaData'
+        code:
+          type: string
+          example: AHAFBH-8
+        itinerary:
+          type: array
+          items:
+            $ref: '#/components/schemas/Itinerary'
+        maps:
+          $ref: '#/components/schemas/Image'
+        meals_included:
+          $ref: '#/components/schemas/Meals'
+        accommodation:
+          $ref: '#/components/schemas/Accommodation'
+        from_price:
+          $ref: '#/components/schemas/Price'
+        to_price obj:
+          $ref: '#/components/schemas/Price'
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
   headers:
     ExpiresAfter:
       description: date in UTC when token expires
